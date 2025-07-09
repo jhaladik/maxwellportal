@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maxwell Portal - Inteligentní portál pro měřící techniku</title>
+
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">M</div>
+                Maxwell Portal
+            </a>
+
+            <!-- All pages include this navigation -->
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Domů</a>
+                <a href="news.html" class="nav-link">News Hub</a>
+                <a href="library.html" class="nav-link">Tech Library</a>
+                <a href="tenders.html" class="nav-link">Mini Tenders</a>
+                <a href="academy.html" class="nav-link">Academy</a>
+            </nav>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Hledat produkty, články, kurzy..." id="globalSearch">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="user-menu">
+                <div class="notification-bell tooltip" data-tooltip="3 nové notifikace">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-avatar tooltip" data-tooltip="Jan Novák - Lab Manager" onclick="showUserMenu()">
+                    JN
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-container">
+                <h1 class="hero-title">Maxwell Portal</h1>
+                <p class="hero-subtitle">
+                    Inteligentní portál pro komunitu měřící techniky s AI agenty. 
+                    Vše co potřebujete pro měření na jednom místě.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="1247">0</span>
+                        <div class="stat-label">Produktů v databázi</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="89">0</span>
+                        <div class="stat-label">Aktivních tenderů</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="234">0</span>
+                        <div class="stat-label">Certifikovaných uživatelů</div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="45">0</span>
+                        <div class="stat-label">AI agentů aktivních</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sections Overview -->
+        <section class="sections-overview">
+            <h2 class="sections-title">4 Inteligentní Sekce</h2>
+            <p class="sections-subtitle">
+                Každá sekce má vlastního AI agenta, který vám pomáhá najít přesně to, co potřebujete
+            </p>
+            
+            <div class="sections-grid">
+                <a href="#" class="section-card" onclick="navigateToSection('news')">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+                        📰
+                    </div>
+                    <h3 class="section-title">News Hub</h3>
+                    <p class="section-description">
+                        AI agent vám přináší personalizované novinky z měřícího průmyslu
+                    </p>
+                    <ul class="section-features">
+                        <li>Týdenní kuráce obsahu</li>
+                        <li>Trendy analýza</li>
+                        <li>Personalizované newsletters</li>
+                        <li>Industry insights</li>
+                    </ul>
+                    <div class="section-cta">Prozkoumat News Hub</div>
+                </a>
+
+                <a href="#" class="section-card" onclick="navigateToSection('library')">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        📚
+                    </div>
+                    <h3 class="section-title">Tech Library</h3>
+                    <p class="section-description">
+                        Inteligentní vyhledávání a porovnávání měřících přístrojů
+                    </p>
+                    <ul class="section-features">
+                        <li>Natural language search</li>
+                        <li>AI porovnávání produktů</li>
+                        <li>Neutral comparison engine</li>
+                        <li>Community reviews</li>
+                    </ul>
+                    <div class="section-cta">Procházet Library</div>
+                </a>
+
+                <a href="#" class="section-card" onclick="navigateToSection('tenders')">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
+                        🎯
+                    </div>
+                    <h3 class="section-title">Mini Tenders</h3>
+                    <p class="section-description">
+                        AI-řízená poptávková platforma s inteligentním matchingem
+                    </p>
+                    <ul class="section-features">
+                        <li>Progressive specification</li>
+                        <li>Smart matching algoritmus</li>
+                        <li>Price intelligence</li>
+                        <li>Multi-partner bidding</li>
+                    </ul>
+                    <div class="section-cta">Vytvořit Tender</div>
+                </a>
+
+                <a href="#" class="section-card" onclick="navigateToSection('academy')">
+                    <div class="section-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
+                        🎓
+                    </div>
+                    <h3 class="section-title">Academy</h3>
+                    <p class="section-description">
+                        Personalizované vzdělávání s adaptivními learning paths
+                    </p>
+                    <ul class="section-features">
+                        <li>AI skill assessment</li>
+                        <li>Adaptivní kurzy</li>
+                        <li>Praktické case studies</li>
+                        <li>Micro-certifikace</li>
+                    </ul>
+                    <div class="section-cta">Začít učení</div>
+                </a>
+            </div>
+        </section>
+
+        <!-- AI Features -->
+        <section class="ai-features">
+            <div class="ai-container">
+                <h2 class="ai-title">Poháněno umělou inteligencí</h2>
+                <p class="ai-subtitle">
+                    4 specializovaní AI agenti pracují 24/7 pro vaše potřeby
+                </p>
+                
+                <div class="ai-features-grid">
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon">🧠</div>
+                        <h4 class="ai-feature-title">Natural Language Search</h4>
+                        <p class="ai-feature-desc">
+                            Hledejte produkty přirozeným jazykem: "multimetr do 1000V s bluetooth"
+                        </p>
+                    </div>
+                    
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon">🎯</div>
+                        <h4 class="ai-feature-title">Smart Matching</h4>
+                        <p class="ai-feature-desc">
+                            AI automaticky páruje vaše požadavky s nejlepšími produkty a dodavateli
+                        </p>
+                    </div>
+                    
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon">📊</div>
+                        <h4 class="ai-feature-title">Predictive Analytics</h4>
+                        <p class="ai-feature-desc">
+                            Predikce trendů, cen a dostupnosti na základě historických dat
+                        </p>
+                    </div>
+                    
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon">🔄</div>
+                        <h4 class="ai-feature-title">Personalizace</h4>
+                        <p class="ai-feature-desc">
+                            Obsah přizpůsobený vaší roli, zájmům a minulému chování
+                        </p>
+                    </div>
+                    
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon">💬</div>
+                        <h4 class="ai-feature-title">Intelligent Assistant</h4>
+                        <p class="ai-feature-desc">
+                            24/7 AI asistent pro technické dotazy a podporu
+                        </p>
+                    </div>
+                    
+                    <div class="ai-feature">
+                        <div class="ai-feature-icon">📈</div>
+                        <h4 class="ai-feature-title">Continuous Learning</h4>
+                        <p class="ai-feature-desc">
+                            AI se neustále učí z vašich preferencí a zlepšuje doporučení
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners -->
+        <section class="partners-section">
+            <div class="partners-container">
+                <h3 class="partners-title">Důvěryhodní partneři</h3>
+                <div class="partners-grid">
+                    <div class="partner-logo featured">Micronix</div>
+                    <div class="partner-logo">Keysight</div>
+                    <div class="partner-logo">Fluke</div>
+                    <div class="partner-logo">Rohde & Schwarz</div>
+                    <div class="partner-logo">Tektronix</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Produkty</h4>
+                    <a href="#">Multimetry</a>
+                    <a href="#">Osciloskopy</a>
+                    <a href="#">Generátory</a>
+                    <a href="#">Spektrální analyzátory</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Vzdělávání</h4>
+                    <a href="#">Kurzy</a>
+                    <a href="#">Certifikace</a>
+                    <a href="#">Webináře</a>
+                    <a href="#">Dokumentace</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Komunita</h4>
+                    <a href="#">Forum</a>
+                    <a href="#">Blog</a>
+                    <a href="#">Newsletter</a>
+                    <a href="#">Events</a>
+                </div>
+                <div class="footer-section">
+                    <h4>O nás</h4>
+                    <a href="#">Partneři</a>
+                    <a href="#">Kariéra</a>
+                    <a href="#">Kontakt</a>
+                    <a href="#">API</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Maxwell Portal. Všechna práva vyhrazena. | Powered by AI</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Assistant Widget -->
+    <div class="ai-assistant">
+        <button class="ai-toggle" onclick="toggleAIChat()">🤖</button>
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-chat-header">
+                Maxwell AI Assistant
+            </div>
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message">
+                    Ahoj! Jsem Maxwell AI asistent. Jak vám mohu pomoci? 
+                    Můžete se zeptat na produkty, kurzy nebo vytvořit tender.
+                </div>
+            </div>
+            <div class="ai-chat-input">
+                <input type="text" placeholder="Napište zprávu..." id="aiInput" onkeypress="handleAIInput(event)">
+                <button onclick="sendAIMessage()">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared JS -->
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/ai-assistant.js"></script>
+    <script src="assets/js/landing.js"></script>
+    
+</html>

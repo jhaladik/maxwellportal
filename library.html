@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Library - Maxwell Portal</title>
+    
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="assets/css/library.css">
+</head>
+
+<body>
+    <!-- Header (inherited from Phase 1) -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="goToHome()">
+                <div class="logo-icon">M</div>
+                Maxwell Portal
+            </a>
+
+            <!-- All pages include this navigation -->
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Domů</a>
+                <a href="news.html" class="nav-link">News Hub</a>
+                <a href="library.html" class="nav-link">Tech Library</a>
+                <a href="tenders.html" class="nav-link">Mini Tenders</a>
+                <a href="academy.html" class="nav-link">Academy</a>
+            </nav>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Hledat produkty..." id="globalSearch">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="user-menu">
+                <div class="notification-bell">
+                    🔔
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-avatar" onclick="showUserMenu()">
+                    JN
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="#" onclick="goToHome()">Maxwell Portal</a> › <strong>Tech Library</strong>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">Tech Library</h1>
+            <p class="page-subtitle">Inteligentní vyhledávání a porovnávání měřících přístrojů s AI asistencí</p>
+
+            <!-- Advanced Search -->
+            <div class="advanced-search">
+                <h2 class="search-title">🧠 AI-Powered Smart Search</h2>
+                <p class="search-subtitle">Hledejte produkty přirozeným jazykem - AI pochopí vaše potřeby</p>
+                
+                <div class="smart-search-container">
+                    <input type="text" class="smart-search-input" id="smartSearch" 
+                           placeholder="Co hledáte? Např: 'multimetr do 1000V s bluetooth komunikací'">
+                    <span class="smart-search-icon">🔍</span>
+                    
+                    <div class="live-results" id="liveResults">
+                        <!-- Live search results will appear here -->
+                    </div>
+                </div>
+                
+                <div class="search-suggestions">
+                    <div class="search-suggestion" onclick="performSearch('multimetr do 1000V s bluetooth')">
+                        "multimetr do 1000V s bluetooth"
+                    </div>
+                    <div class="search-suggestion" onclick="performSearch('osciloskop 100MHz 4 kanály')">
+                        "osciloskop 100MHz 4 kanály"
+                    </div>
+                    <div class="search-suggestion" onclick="performSearch('generátor 50MHz s arbitrary')">
+                        "generátor 50MHz s arbitrary"
+                    </div>
+                    <div class="search-suggestion" onclick="performSearch('analyzátor spektra do 6GHz')">
+                        "analyzátor spektra do 6GHz"
+                    </div>
+                </div>
+                
+                <div class="ai-search-hint">
+                    💡 AI tip: Můžete psát i aplikace - "měření automotive signálů" nebo "laboratorní kalibrace"
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters Section -->
+        <div class="filters-section">
+            <h3 class="filters-title">🎛️ Pokročilé filtry</h3>
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label class="filter-label">Kategorie</label>
+                    <select class="filter-select" id="categoryFilter" onchange="applyFilters()">
+                        <option value="">Všechny kategorie</option>
+                        <option value="multimeters">Multimetry</option>
+                        <option value="oscilloscopes">Osciloskopy</option>
+                        <option value="generators">Generátory</option>
+                        <option value="analyzers">Analyzátory</option>
+                        <option value="power-supplies">Zdroje napětí</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">Výrobce</label>
+                    <select class="filter-select" id="brandFilter" onchange="applyFilters()">
+                        <option value="">Všichni výrobci</option>
+                        <option value="keysight">Keysight</option>
+                        <option value="fluke">Fluke</option>
+                        <option value="rigol">Rigol</option>
+                        <option value="tektronix">Tektronix</option>
+                        <option value="rohde-schwarz">Rohde & Schwarz</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">Cenové rozpětí (€)</label>
+                    <div class="price-range-container">
+                        <input type="number" class="price-input" id="priceMin" placeholder="Od" onchange="applyFilters()">
+                        <span>-</span>
+                        <input type="number" class="price-input" id="priceMax" placeholder="Do" onchange="applyFilters()">
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <label class="filter-label">Dostupnost</label>
+                    <div class="filter-checkboxes">
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="inStock" onchange="applyFilters()">
+                            Skladem
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" id="newProducts" onchange="applyFilters()">
+                            Nové produkty
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Detail View -->
+        <div class="product-detail-view" id="productDetailView">
+            <div class="product-detail-header">
+                <div class="product-detail-image" id="detailImage">
+                    🔢
+                </div>
+                
+                <div class="product-detail-info">
+                    <div class="product-detail-brand" id="detailBrand">Keysight</div>
+                    <h1 id="detailName">Keysight 34470A Digital Multimeter</h1>
+                    <p class="product-detail-description" id="detailDescription">
+                        Profesionální bench multimetr s nejvyšší přesností pro laboratorní aplikace. 
+                        Ideální pro kalibrace, výzkum a vývoj.
+                    </p>
+                    <div class="product-detail-features" id="detailFeatures">
+                        <!-- Features will be loaded here -->
+                    </div>
+                </div>
+                
+                <div class="product-detail-actions">
+                    <div class="product-detail-price" id="detailPrice">
+                        €1,250
+                        <span class="currency">bez DPH</span>
+                    </div>
+                    <div class="product-detail-buttons">
+                        <button class="back-button" onclick="closeProductDetail()">
+                            ← Zpět na seznam
+                        </button>
+                        <button class="btn btn-primary" onclick="addToTenderFromDetail()">
+                            🎯 Do tenderu
+                        </button>
+                        <button class="btn btn-secondary" onclick="addToComparisonFromDetail()">
+                            ⚖️ Porovnat
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-detail-content">
+                <div class="product-detail-main">
+                    <!-- Tabs Navigation -->
+                    <div class="product-tabs">
+                        <button class="tab-button active" onclick="switchTab('overview')">Přehled</button>
+                        <button class="tab-button" onclick="switchTab('specs')">Specifikace</button>
+                        <button class="tab-button" onclick="switchTab('documentation')">Dokumentace</button>
+                        <button class="tab-button" onclick="switchTab('videos')">Videa</button>
+                        <button class="tab-button" onclick="switchTab('reviews')">Recenze</button>
+                    </div>
+
+                    <!-- Tab Content -->
+                    <div class="tab-content active" id="tab-overview">
+                        <h3>Popis produktu</h3>
+                        <p id="detailFullDescription">
+                            Keysight 34470A reprezentuje novou generaci digitálních multimetrů s bezkonkurenční 
+                            přesností 7.5 číslic. Kombinuje rychlost, přesnost a intuitivní ovládání prostřednictvím 
+                            4.3" barevného dotykového displeje...
+                        </p>
+                        
+                        <h4 style="margin-top: 2rem; margin-bottom: 1rem;">Klíčové vlastnosti</h4>
+                        <ul id="detailKeyFeatures" style="padding-left: 1.5rem; line-height: 1.8;">
+                            <!-- Key features will be loaded here -->
+                        </ul>
+                    </div>
+
+                    <div class="tab-content" id="tab-specs">
+                        <h3>Technické specifikace</h3>
+                        <table class="specs-table" id="detailSpecsTable">
+                            <thead>
+                                <tr>
+                                    <th>Parametr</th>
+                                    <th>Hodnota</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- Specs will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="tab-documentation">
+                        <h3>Ke stažení</h3>
+                        <div class="documentation-list" id="detailDocumentation">
+                            <!-- Documentation will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-videos">
+                        <h3>Video návody</h3>
+                        <div class="videos-grid" id="detailVideos">
+                            <!-- Videos will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab-reviews">
+                        <h3>Uživatelské recenze</h3>
+                        <div class="reviews-list" id="detailReviews">
+                            <!-- Reviews will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Insights for Product Detail -->
+                <div class="product-detail-ai">
+                    <div class="product-ai-title">
+                        🤖 AI Analýza produktu
+                    </div>
+                    
+                    <div class="ai-section">
+                        <h4>Hodnocení pro váš profil</h4>
+                        <div class="ai-item" id="detailUserMatch">
+                            Perfektní pro Lab Manager s požadavky na přesnost
+                        </div>
+                    </div>
+
+                    <div class="ai-section">
+                        <h4>Alternativní produkty</h4>
+                        <div class="ai-alternatives" id="detailAlternatives">
+                            <!-- Alternatives will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="ai-section">
+                        <h4>Kompatibilní doplňky</h4>
+                        <div class="ai-compatible" id="detailCompatible">
+                            <!-- Compatible items will be loaded here -->
+                        </div>
+                    </div>
+
+                    <div class="ai-section">
+                        <h4>Typické použití</h4>
+                        <div class="ai-use-cases" id="detailUseCases">
+                            <!-- Use cases will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="results-section">
+            <div class="results-header">
+                <div class="results-count">
+                    Zobrazuje se <strong id="resultsCount">47</strong> produktů
+                    <span class="ai-badge">AI optimalizováno</span>
+                </div>
+                
+                <div class="results-sort">
+                    <span>Řadit podle:</span>
+                    <select class="sort-select" id="sortBy" onchange="applySorting()">
+                        <option value="relevance">AI relevance</option>
+                        <option value="price-asc">Cena (nejlevnější)</option>
+                        <option value="price-desc">Cena (nejdražší)</option>
+                        <option value="name">Název A-Z</option>
+                        <option value="newest">Nejnovější</option>
+                    </select>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="active" onclick="toggleView('grid')">⚏ Mřížka</button>
+                    <button onclick="toggleView('list')">☰ Seznam</button>
+                </div>
+            </div>
+
+            <div class="results-content">
+                <!-- Products Grid -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <!-- AI Insights Panel - Right Sidebar -->
+                <div class="ai-insights">
+                    <div class="ai-insights-title">
+                        🤖 AI Insights pro váš výběr
+                    </div>
+                    <div class="ai-insights-content">
+                        <div class="ai-insight-item">
+                            <div class="ai-insight-title">Nejpopulárnější volba pro Lab Managery</div>
+                            <div class="ai-insight-desc">Keysight 34470A - 73% uživatelů s podobným profilem si vybírá tento multimetr</div>
+                        </div>
+                        <div class="ai-insight-item">
+                            <div class="ai-insight-title">Alternativa s lepším poměrem cena/výkon</div>
+                            <div class="ai-insight-desc">Rigol DM3068 nabízí 90% funkcí za 60% ceny</div>
+                        </div>
+                        <div class="ai-insight-item">
+                            <div class="ai-insight-title">Trending v Q1 2025</div>
+                            <div class="ai-insight-desc">Osciloskopy s touch displejem - 40% nárůst zájmu tento měsíc</div>
+                        </div>
+                        <div class="ai-insight-item">
+                            <div class="ai-insight-title">Doporučení na základě vaší role</div>
+                            <div class="ai-insight-desc">Lab Manageři často potřebují vysokou přesnost a data logging capabilities</div>
+                        </div>
+                        <div class="ai-insight-item">
+                            <div class="ai-insight-title">Kompatibilní doplňky</div>
+                            <div class="ai-insight-desc">Zkontrolujte kalibrační standardy a testovací kabely pro komplexní řešení</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Comparison Bar -->
+    <div class="comparison-bar" id="comparisonBar">
+        <div class="comparison-content">
+            <div class="comparison-items" id="comparisonItems">
+                <!-- Selected products for comparison will appear here -->
+            </div>
+            <div class="comparison-actions">
+                <button class="btn btn-primary" onclick="openComparison()">
+                    Porovnat produkty
+                </button>
+                <button class="btn btn-secondary" onclick="clearComparison()">
+                    Vymazat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- Shared JS -->
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/ai-assistant.js"></script>
+    
+    <!-- Page-specific JS -->
+    <script src="assets/js/library.js"></script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Tenders - Maxwell Portal</title>
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="assets/css/tenders.css">    
+</head>
+
+<body>
+    <!-- Header (inherited from previous phases) -->
+    <header class="header">
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="goToHome()">
+                <div class="logo-icon">M</div>
+                Maxwell Portal
+            </a>
+            
+            <!-- All pages include this navigation -->
+            <nav class="main-nav">
+                <a href="index.html" class="nav-link">Domů</a>
+                <a href="news.html" class="nav-link">News Hub</a>
+                <a href="library.html" class="nav-link">Tech Library</a>
+                <a href="tenders.html" class="nav-link">Mini Tenders</a>
+                <a href="academy.html" class="nav-link">Academy</a>
+            </nav>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Hledat tendery, produkty..." id="globalSearch">
+                <span class="search-icon">🔍</span>
+            </div>
+            
+            <div class="user-menu">
+                <div class="notification-bell">
+                    🔔
+                    <span class="notification-badge">5</span>
+                </div>
+                <div class="user-avatar" onclick="showUserMenu()">
+                    JN
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Container -->
+    <div class="page-container">
+        <!-- Breadcrumb -->
+        <div class="breadcrumb" id="breadcrumb">
+            <a href="#" onclick="goToHome()">Maxwell Portal</a> › <strong>Mini Tenders</strong>
+        </div>
+
+        <!-- Dashboard View (Default) -->
+        <div class="dashboard-view" id="dashboardView">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1 class="page-title">Mini Tenders</h1>
+                <p class="page-subtitle">AI-řízená poptávková platforma s inteligentním matchingem dodavatelů</p>
+                
+                <!-- Dashboard Stats -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon">🎯</div>
+                        <span class="stat-number" data-target="12">0</span>
+                        <div class="stat-label">Aktivních tenderů</div>
+                        <div class="stat-change positive">+3 tento týden</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <span class="stat-number" data-target="89">0</span>
+                        <div class="stat-label">% Úspěšnost</div>
+                        <div class="stat-change positive">+7% oproti Q4</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⏱️</div>
+                        <span class="stat-number" data-target="2.4">0</span>
+                        <div class="stat-label">Průměrná doba (dny)</div>
+                        <div class="stat-change negative">+0.3 oproti průměru</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🤝</div>
+                        <span class="stat-number" data-target="34">0</span>
+                        <div class="stat-label">Aktivních partnerů</div>
+                        <div class="stat-change positive">+5 nových</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Section -->
+            <div class="action-section">
+                <h2 class="action-title">🚀 Vytvořte nový tender</h2>
+                <p class="action-subtitle">AI vám pomůže s optimální specifikací a najde nejlepší dodavatele</p>
+                <button class="create-tender-btn" onclick="showCreateTender()">
+                    ✨ Začít s AI asistentem
+                </button>
+            </div>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Active Tenders -->
+                <div class="tenders-section">
+                    <div class="section-header">
+                        <h3 class="section-title">🎯 Aktivní tendery</h3>
+                        <a href="#" class="section-action" onclick="showAIMatchingDemo()">Zobrazit AI matching</a>
+                    </div>
+                    <div class="tender-list" id="tenderList">
+                        <!-- Tenders will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- AI Insights Panel -->
+                <div class="ai-insights-panel">
+                    <div class="insights-title">
+                        🤖 AI Market Intelligence
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-title">Trending v Q1 2025</div>
+                        <div class="insight-desc">Multimetry s bluetooth komunikací - 40% nárůst poptávky oproti Q4 2024</div>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-title">Cenové trendy</div>
+                        <div class="insight-desc">Laboratorní přístroje průměrně -3% oproti minulému kvartálu</div>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-title">Delivery optimization</div>
+                        <div class="insight-desc">Průměrná doba dodání 2.1 týdne - nejrychlejší za poslední rok</div>
+                    </div>
+                    
+                    <div class="insight-item">
+                        <div class="insight-title">Success tip</div>
+                        <div class="insight-desc">Tendery s definovaným komunikačním rozhraním mají 60% vyšší úspěšnost</div>
+                    </div>
+
+                    <div class="market-trends">
+                        <h4 style="margin-bottom: 1rem; color: var(--dark-gray);">📊 Market Activity</h4>
+                        <div class="trend-chart">
+                            📈 AI Analytics Dashboard
+                        </div>
+                        <div class="trend-summary">
+                            <div class="trend-item">
+                                <span class="trend-label">Nové tendery:</span>
+                                <span class="trend-value trend-positive">+23%</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-label">Avg. response time:</span>
+                                <span class="trend-value">1.8 dne</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-label">Partner satisfaction:</span>
+                                <span class="trend-value trend-positive">94%</span>
+                            </div>
+                            <div class="trend-item">
+                                <span class="trend-label">Price competitiveness:</span>
+                                <span class="trend-value trend-positive">+12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Tender View -->
+        <div class="create-tender-view" id="createTenderView">
+            <a href="#" class="back-button" onclick="showDashboard()">
+                ← Zpět na dashboard
+            </a>
+
+            <div class="wizard-container">
+                <div class="wizard-header">
+                    <h2 class="wizard-title">🤖 AI-Guided Tender Creation</h2>
+                    <p class="wizard-subtitle">Odpovězte na několik otázek a AI vytvoří optimální specifikaci</p>
+                    
+                    <div class="progress-indicator">
+                        <div class="progress-step active" id="step1">1</div>
+                        <div class="progress-line" id="line1"></div>
+                        <div class="progress-step" id="step2">2</div>
+                        <div class="progress-line" id="line2"></div>
+                        <div class="progress-step" id="step3">3</div>
+                        <div class="progress-line" id="line3"></div>
+                        <div class="progress-step" id="step4">4</div>
+                    </div>
+                </div>
+
+                <div class="wizard-content">
+                    <!-- Step 1: Category Selection -->
+                    <div class="wizard-step active" id="wizardStep1">
+                        <h3 class="step-question">Co budete měřit?</h3>
+                        <p class="step-description">Vyberte hlavní kategorii měření pro váš projekt</p>
+                        
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption('category', 'voltage-current')">
+                                <div class="option-icon">⚡</div>
+                                <div class="option-title">Napětí a proud</div>
+                                <div class="option-desc">DC/AC měření, multimetry, zátěžové testy</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption('category', 'frequency')">
+                                <div class="option-icon">📊</div>
+                                <div class="option-title">Frekvenci a signály</div>
+                                <div class="option-desc">Osciloskopy, generátory, analyzátory</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption('category', 'temperature')">
+                                <div class="option-icon">🌡️</div>
+                                <div class="option-title">Teplotu</div>
+                                <div class="option-desc">Termometry, termostatické komory</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption('category', 'other')">
+                                <div class="option-icon">🔧</div>
+                                <div class="option-title">Jiné veličiny</div>
+                                <div class="option-desc">Tlak, vlhkost, síla, další parametry</div>
+                            </div>
+                        </div>
+
+                        <div class="ai-suggestions">
+                            <div class="ai-suggestions-title">
+                                🤖 AI doporučuje také zvážit:
+                            </div>
+                            <div class="suggestion-item" onclick="addSuggestion('calibration')">
+                                📐 Kalibrační požadavky (ISO 17025)
+                            </div>
+                            <div class="suggestion-item" onclick="addSuggestion('data-logging')">
+                                💾 Data logging capabilities
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Specifications -->
+                    <div class="wizard-step" id="wizardStep2">
+                        <h3 class="step-question">Jaké jsou vaše technické požadavky?</h3>
+                        <p class="step-description">AI automaticky doplní relevantní specifikace na základě vaší kategorie</p>
+                        
+                        <div class="input-group">
+                            <label class="input-label">Rozsah měření</label>
+                            <select class="input-field" id="measurementRange" onchange="updateSpecs()">
+                                <option value="">Vyberte rozsah...</option>
+                                <option value="low">Do 100V/1A (nízkonapěťové)</option>
+                                <option value="medium">Do 1000V/10A (standardní)</option>
+                                <option value="high">Nad 1000V (vysokonapěťové)</option>
+                            </select>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Požadovaná přesnost</label>
+                            <select class="input-field" id="accuracyRequirement" onchange="updateSpecs()">
+                                <option value="">Vyberte přesnost...</option>
+                                <option value="basic">±1% (základní měření)</option>
+                                <option value="standard">±0.1% (standardní přesnost)</option>
+                                <option value="precision">±0.01% (laboratoní přesnost)</option>
+                                <option value="reference">±0.001% (referenční měření)</option>
+                            </select>
+                        </div>
+
+                        <div class="matching-counter" id="matchingCounter">
+                            🎯 Nalezeno <strong id="matchCount">0</strong> produktů odpovídajících vašim požadavkům
+                        </div>
+
+                        <div class="ai-suggestions">
+                            <div class="ai-suggestions-title">
+                                🤖 AI detekuje možné chybějící specifikace:
+                            </div>
+                            <div class="suggestion-item" onclick="addSpec('true-rms')">
+                                ⚡ True RMS měření (doporučeno pro AC signály)
+                            </div>
+                            <div class="suggestion-item" onclick="addSpec('communication')">
+                                📡 Komunikační rozhraní (USB, LAN, GPIB)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Application Context -->
+                    <div class="wizard-step" id="wizardStep3">
+                        <h3 class="step-question">Jaký je kontext použití?</h3>
+                        <p class="step-description">Pomozte AI vybrat nejvhodnější typ přístrojů</p>
+                        
+                        <div class="options-grid">
+                            <div class="option-card" onclick="selectOption('application', 'laboratory')">
+                                <div class="option-icon">🔬</div>
+                                <div class="option-title">Laboratorní měření</div>
+                                <div class="option-desc">Benchtop přístroje, vysoká přesnost, stabilní prostředí</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption('application', 'field')">
+                                <div class="option-icon">🚗</div>
+                                <div class="option-title">Field/servisní měření</div>
+                                <div class="option-desc">Portable přístroje, robustní konstrukce</div>
+                            </div>
+                            <div class="option-card" onclick="selectOption('application', 'production')">
+                                <div class="option-icon">🏭</div>
+                                <div class="option-title">Produkční testování</div>
+                                <div class="option-desc">Rychlost, automatizace, integrace</div>
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Rozpočet (orientační)</label>
+                            <select class="input-field" id="budgetRange">
+                                <option value="">Vyberte rozpočet...</option>
+                                <option value="low">Do €1,000</option>
+                                <option value="medium">€1,000 - €5,000</option>
+                                <option value="high">€5,000 - €15,000</option>
+                                <option value="premium">Nad €15,000</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review & Submit -->
+                    <div class="wizard-step" id="wizardStep4">
+                        <h3 class="step-question">Zkontrolujte specifikaci</h3>
+                        <p class="step-description">AI vytvořila optimalizovanou specifikaci na základě vašich odpovědí</p>
+                        
+                        <div class="tender-requirements">
+                            <h4 class="requirements-title">📋 Finální specifikace</h4>
+                            <div class="requirement-list" id="finalSpecs">
+                                <!-- Final specs will be populated here -->
+                            </div>
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Název tenderu</label>
+                            <input type="text" class="input-field" id="tenderTitle" placeholder="Např. Multimetry pro laboratorní měření">
+                        </div>
+
+                        <div class="input-group">
+                            <label class="input-label">Deadline pro nabídky</label>
+                            <input type="date" class="input-field" id="tenderDeadline">
+                        </div>
+
+                        <div class="ai-suggestions">
+                            <div class="ai-suggestions-title">
+                                🤖 AI předpověď úspěšnosti: <strong>87%</strong>
+                            </div>
+                            <div style="color: var(--primary-blue); font-size: 0.9rem; margin-top: 0.5rem;">
+                                Očekávaný počet nabídek: 3-5 | Průměrná cena: €3,200 | Doba dodání: 2-3 týdny
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="wizard-actions">
+                    <button class="btn btn-secondary" id="prevBtn" onclick="previousStep()" disabled>
+                        ← Předchozí
+                    </button>
+                    <div>
+                        <span id="stepInfo">Krok 1 ze 4</span>
+                    </div>
+                    <button class="btn btn-primary" id="nextBtn" onclick="nextStep()">
+                        Další →
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tender Detail View -->
+        <div class="tender-detail-view" id="tenderDetailView">
+            <a href="#" class="back-button" onclick="showDashboard()">
+                ← Zpět na dashboard
+            </a>
+
+            <div class="tender-detail-header">
+                <h2 class="tender-detail-title" id="detailTitle">Multimetry pro laboratorní měření</h2>
+                
+                <div class="tender-detail-meta">
+                    <div class="detail-meta-item">
+                        <div class="meta-item-label">Tender ID</div>
+                        <div class="meta-item-value" id="detailId">TND-2025-001</div>
+                    </div>
+                    <div class="detail-meta-item">
+                        <div class="meta-item-label">Status</div>
+                        <div class="meta-item-value">
+                            <span class="tender-status status-active" id="detailStatus">Aktivní</span>
+                        </div>
+                    </div>
+                    <div class="detail-meta-item">
+                        <div class="meta-item-label">Deadline</div>
+                        <div class="meta-item-value" id="detailDeadline">25. ledna 2025</div>
+                    </div>
+                    <div class="detail-meta-item">
+                        <div class="meta-item-label">Rozpočet</div>
+                        <div class="meta-item-value" id="detailBudget">€5,000 - €8,000</div>
+                    </div>
+                </div>
+
+                <div class="tender-requirements">
+                    <h4 class="requirements-title">📋 Požadavky</h4>
+                    <div class="requirement-list" id="detailRequirements">
+                        <!-- Requirements will be populated here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bids Section -->
+            <div class="bids-section">
+                <div class="bids-header">
+                    <h3 class="bids-title">💼 Přijaté nabídky</h3>
+                    <div class="bids-count" id="bidsCount">3 nabídky</div>
+                </div>
+                
+                <div class="bids-list" id="bidsList">
+                    <!-- Bids will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Matching Demo View -->
+        <div class="ai-matching-view" id="aiMatchingView">
+            <a href="#" class="back-button" onclick="showDashboard()">
+                ← Zpět na dashboard
+            </a>
+
+            <div class="matching-demo">
+                <div class="matching-header">
+                    <h2 class="matching-title">🤖 AI Matching Process</h2>
+                    <p class="matching-subtitle">Sledujte, jak AI analyzuje požadavky a hledá nejlepší produkty</p>
+                </div>
+
+                <div class="matching-process" id="matchingProcess">
+                    <div class="process-step" id="processStep1">
+                        <div class="step-icon">🔍</div>
+                        <div class="step-content">
+                            <div class="step-title">Analýza požadavků</div>
+                            <div class="step-description">AI parsuje technické specifikace a identifikuje klíčové parametry</div>
+                            <div class="step-result">
+                                Nalezeny požadavky: Multimetr, 1000V, 0.01% přesnost, True RMS
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step" id="processStep2">
+                        <div class="step-icon">🏪</div>
+                        <div class="step-content">
+                            <div class="step-title">Vyhledávání v katalogu</div>
+                            <div class="step-description">Prohledávání databáze produktů s AI semantic search</div>
+                            <div class="step-result">
+                                Nalezeno 47 produktů odpovídajících kategorii "multimetr"
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step" id="processStep3">
+                        <div class="step-icon">⚖️</div>
+                        <div class="step-content">
+                            <div class="step-title">Scoring kompatibility</div>
+                            <div class="step-description">Hodnocení každého produktu podle míry splnění požadavků</div>
+                            <div class="step-result">
+                                Vypočítáno compatibility score pro 47 produktů (0-100%)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step" id="processStep4">
+                        <div class="step-icon">💰</div>
+                        <div class="step-content">
+                            <div class="step-title">Cenová analýza</div>
+                            <div class="step-description">Kontrola dostupnosti, cen a dodacích lhůt u partnerů</div>
+                            <div class="step-result">
+                                Aktualizovány ceny a dostupnost z 12 partnerských systémů
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="process-step" id="processStep5">
+                        <div class="step-icon">🎯</div>
+                        <div class="step-content">
+                            <div class="step-title">Finální ranking</div>
+                            <div class="step-description">AI kombinuje kompatibilitu, cenu a dostupnost do finálního skóre</div>
+                            <div class="step-result">
+                                Seřazeno podle AI recommendation score
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="matching-results">
+                    <h3 class="results-title">🏆 Top AI doporučení</h3>
+                    <div class="result-items" id="matchingResults">
+                        <!-- Results will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <!-- AI Assistant Widget (inherited) -->
+    <div class="ai-assistant">
+        <button class="ai-toggle" onclick="toggleAIChat()">🤖</button>
+        <div class="ai-chat" id="aiChat">
+            <div class="ai-chat-header">
+                Maxwell AI Tender Assistant
+            </div>
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message">
+                    Ahoj! Jsem specializovaný AI asistent pro tendery. Mohu vám pomoci s:
+                    <br>• Vytvořením optimální specifikace
+                    <br>• Analýzou přijatých nabídek  
+                    <br>• Market intelligence insights
+                    <br>• Doporučením nejlepších dodavatelů
+                </div>
+            </div>
+            <div class="ai-chat-input">
+                <input type="text" placeholder="Zeptejte se na cokoliv o tenderech..." id="aiInput" onkeypress="handleAIInput(event)">
+                <button onclick="sendAIMessage()">▶</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shared JS -->
+    <script src="assets/js/shared.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/ai-assistant.js"></script>
+    
+    <!-- Page-specific JS -->
+    <script src="assets/js/tenders.js"></script></body>
+</html>
