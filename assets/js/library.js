@@ -770,11 +770,6 @@
             // Wishlist functionality would be implemented here
         }
 
-        // Navigation Functions (inherited from Phase 1)
-        function goToHome() {
-            alert('Návrat na landing page...');
-        }
-
         function navigateToSection(section) {
             alert(`Navigace do sekce: ${section}\n\nBude implementováno v následujících fázích.`);
         }
