@@ -624,22 +624,6 @@
                 return 'Jsem zde pro personalizované vzdělávací poradenství. Mohu analyzovat váš pokrok, doporučit kurzy, nebo pomoci s learning strategií. Co vás zajímá?';
             }
         }
-
-        // Navigation Functions (inherited from previous phases)
-        function goToHome() {
-            alert('Návrat na landing page...');
-        }
-
-        function navigateToSection(section) {
-            if (section === 'library') {
-                alert('Navigace do Tech Library...\n\nV reálné aplikaci by se načetla tech-library.html');
-            } else if (section === 'tenders') {
-                alert('Navigace do Mini Tenders...\n\nV reálné aplikaci by se načetla mini-tenders.html');
-            } else {
-                alert(`Navigace do sekce: ${section}\n\nBude implementováno v dalších fázích.`);
-            }
-        }
-
         function showUserMenu() {
             alert('Jan Novák\nLab Manager @ TechLab s.r.o.\n\nAcademy Progress:\n• 3 kurzy dokončeny\n• 1 certifikace v procesu\n• 7 dní learning streak\n\nProfil uživatele...');
         }

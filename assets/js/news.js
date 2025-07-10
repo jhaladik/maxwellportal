@@ -451,23 +451,6 @@
             }
         }
 
-        // Navigation Functions (inherited from previous phases)
-        function goToHome() {
-            alert('Návrat na landing page...');
-        }
-
-        function navigateToSection(section) {
-            if (section === 'library') {
-                alert('Navigace do Tech Library...\n\nZobrazí se produkty související s aktuálním článkem.');
-            } else if (section === 'tenders') {
-                alert('Navigace do Mini Tenders...\n\nMožnost vytvořit tender na produkty zmíněné v článcích.');
-            } else if (section === 'academy') {
-                alert('Navigace do Academy...\n\nDoporučené kurzy na základě přečtených článků.');
-            } else {
-                alert(`Navigace do sekce: ${section}\n\nBude implementováno v dalších fázích.`);
-            }
-        }
-
         function showUserMenu() {
             alert('Jan Novák\nLab Manager @ TechLab s.r.o.\n\nNews preferences:\n• AI relevance: 95%\n• Favorite topics: RF testing, AI automation\n• Newsletter: Weekly digest\n• Read articles: 23 this month\n\nProfil uživatele...');
         }

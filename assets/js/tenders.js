@@ -729,19 +729,6 @@
             }
         }
 
-        // Navigation Functions (inherited from previous phases)
-        function goToHome() {
-            alert('Návrat na landing page...');
-        }
-
-        function navigateToSection(section) {
-            if (section === 'library') {
-                alert('Navigace do Tech Library...\n\nV reálné aplikaci by se načetla tech-library.html');
-            } else {
-                alert(`Navigace do sekce: ${section}\n\nBude implementováno v dalších fázích.`);
-            }
-        }
-
         function showUserMenu() {
             alert('Jan Novák\nLab Manager @ TechLab s.r.o.\n\nProfil uživatele...');
         }

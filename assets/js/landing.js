@@ -131,11 +131,6 @@
         }
 
         // Navigation Functions
-        function navigateToSection(section) {
-            // Simulate navigation to different sections
-            console.log(`Navigating to: ${section}`);
-            alert(`Navigace do sekce: ${section}\n\nTato funkcionalita bude implementována v následující fázi.`);
-        }
 
         function showUserMenu() {
             const user = mockData.users.current;

@@ -1,13 +1,13 @@
 function goToHome() {
-    window.location.href = 'index.html';
+    window.location.href = './index.html';
 }
 
 function navigateToSection(section) {
     const pages = {
-        'news': 'news.html',
-        'library': 'library.html', 
-        'tenders': 'tenders.html',
-        'academy': 'academy.html'
+        'news': './news.html',
+        'library': './library.html', 
+        'tenders': './tenders.html',
+        'academy': './academy.html'
     };
     
     if (pages[section]) {
@@ -17,7 +17,7 @@ function navigateToSection(section) {
 
 // Set active nav state
 function setActiveNav() {
-    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const currentPage = window.location.pathname.split('/').pop() || './index.html';
     const navLinks = document.querySelectorAll('.main-nav a');
     
     navLinks.forEach(link => {
